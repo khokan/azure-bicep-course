@@ -6,7 +6,7 @@ trigger: none
 variables:
   resourceGroupName: 'rg-bicep-demo-0023'
   location: 'westeurope'
-  webAppName: 'bicep0023'
+  webAppName: 'bicep0023kk'
   templateFile: '01-bicep-webapp/webapp-linux.bicep'
 
 pool:
@@ -38,10 +38,10 @@ stages:
         testResultsFiles: '$(System.DefaultWorkingDirectory)\results\*-armttk.xml'
       condition: always()
 
+
     - task: AzureCLI@2
-      displayName: Preview Bicep Changes
       inputs:
-        azureSubscription: 'Microsoft-Azure-0(17b12858-3960-4e6f-a663-a06fdae23428)'
+        azureSubscription: 'Azure subscription 1(46240961-dac6-4085-8b27-dfee0ef43287)'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
@@ -62,7 +62,7 @@ stages:
     - task: ManualValidation@0
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
-        notifyUsers: 'houssem.dellai@live.com'
+        notifyUsers: 'khokon@gmail.com'
         instructions: 'Please validate the build $(Build.BuildId) configuration and resume'
         onTimeout: 'resume'
 
@@ -74,9 +74,8 @@ stages:
 
     steps:
     - task: AzureCLI@2
-      displayName: Deploy Bicep To Azure
       inputs:
-        azureSubscription: 'Microsoft-Azure-0(17b12858-3960-4e6f-a663-a06fdae23428)'
+        azureSubscription: 'Azure subscription 1(46240961-dac6-4085-8b27-dfee0ef43287)'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
